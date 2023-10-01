@@ -10,7 +10,6 @@ class Person
 
   # Private method of_age? that returns true if @age is greater or equal to 18 and false otherwise.
   Private
-
   def of_age
     age >= 18
   end
