@@ -4,8 +4,8 @@ class Teacher < Person
   attr_accessor :specialization
 
   # Constructor extends parent's constructor by adding @specialization and a parameter for it.
-  def initialize(age, name = 'Unknown', parent_permission: true, specialization)
-    super(age, name, parent_permission) # Use "Teacher" in super???
+  def initialize(age, specialization, name = 'Unknown', parent_permission: true)
+    super(age, name, parent_permission)
     @specialization = specialization
   end
 

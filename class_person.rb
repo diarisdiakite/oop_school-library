@@ -11,12 +11,12 @@ class Person
   # Private method of_age? that returns true if @age is greater or equal to 18 and false otherwise.
   Private
 
-  def of_age # private method
+  def of_age
     age >= 18
   end
 
   # Public method can_use_services? that returns true if person is of age or if they have permission from parents.
-  def Public can_use_services
+  def can_use_services
     of_age? || @parent_permission
   end
 end
