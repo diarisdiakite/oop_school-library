@@ -1,16 +1,20 @@
-require_relative 'class_nameable'
+require_relative 'nameable'
 
 class Person < Nameable
-  attr_accessor :age, :name 
+  attr_accessor :age, :name
   attr_reader :id, :parent_permission
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     super()
-    @id = id
+    @id = generate_id
     @name = name
     @age = age
     @parent_permission = parent_permission
-    @nameable = nameable
+    # @nameable = nameable
+  end
+
+  def generate_id
+    rand(1_000_000)
   end
 
   # Public method can_use_services? that returns true if person is of age or if they have permission from parents.
@@ -30,3 +34,6 @@ class Person < Nameable
     age >= 18
   end
 end
+
+# person = Person.new(22, 'maximilianus')
+# puts person.name

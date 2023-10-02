@@ -26,7 +26,7 @@
 
 # 📖 [School-library](#School-library) <a name="about-project"></a>
 
-The School-library project is an application that allows an efficient use of libraries especially in school areas. The administrators can perform the tasks such as add, delete and update information about books and publications as well as ..... books to students or other registerd users as the teachers and administration employees. Users, students, teachers and administration employees can borrow books through the application. The School-library app was created with Ruby.  
+The School-library project is an application that allows an efficient use of libraries especially in school areas. The administrators can perform the tasks such as add, delete and update information about books and publications as well as lending books to students or other registerd users as the teachers and administration employees. Users, students, teachers and administration employees can borrow books through the application. The School-library app was created with Ruby.  
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -165,7 +165,7 @@ GitHub: [@Didy](github.com/diarisdiakite)
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/diarisdiakite/School-library/issues).
+Feel free to check the [issues page](https://github.com/diarisdiakite/oop_school-library/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
