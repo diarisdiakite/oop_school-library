@@ -1,7 +1,8 @@
 require_relative 'class_nameable'
 
 class Person < Nameable
-  attr_accessor :age, :name, :parent_permission
+  attr_accessor :age, :name 
+  attr_reader :id, :parent_permission
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     super()
@@ -12,14 +13,6 @@ class Person < Nameable
     @nameable = nameable
   end
 
-  # Private method of_age? that returns true if @age is greater or equal to 18 and false otherwise.
-
-  private
-
-  def of_age
-    age >= 18
-  end
-
   # Public method can_use_services? that returns true if person is of age or if they have permission from parents.
   def can_use_services
     of_age? || @parent_permission
@@ -27,5 +20,13 @@ class Person < Nameable
 
   def correct_name
     @name
+  end
+
+  # Private method of_age? that returns true if @age is greater or equal to 18 and false otherwise.
+
+  private
+
+  def of_age
+    age >= 18
   end
 end

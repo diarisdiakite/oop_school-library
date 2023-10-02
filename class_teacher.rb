@@ -1,11 +1,11 @@
 require_relative 'class_person'
 
 class Teacher < Person
-  attr_accessor :specialization
+  attr_reader :specialization
 
   # Constructor extends parent's constructor by adding @specialization and a parameter for it.
-  def initialize(age, specialization, name = 'Unknown', parent_permission: true)
-    super(age, name, parent_permission)
+  def initialize(id, age, specialization, name = 'Unknown', parent_permission: true)
+    super(id, age, name, parent_permission)
     @specialization = specialization
   end
 
