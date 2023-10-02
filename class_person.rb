@@ -9,7 +9,7 @@ class Person
     @parent_permission = parent_permission
   end
 
-   # Public method can_use_services? that returns true if person is of age or if they have permission from parents.
+  # Public method can_use_services? that returns true if person is of age or if they have permission from parents.
   def can_use_services
     of_age? || @parent_permission
   end
