@@ -1,7 +1,7 @@
 require_relative 'class_person'
 
 class Student < Person
-  attr_accessor :classroom
+  attr_reader :classroom
 
   # Constructor extends parent's constructor by adding `@classroom` and a parameter for it.
   def initialize(age, classroom, name = 'Unknown', parent_permission: true)
