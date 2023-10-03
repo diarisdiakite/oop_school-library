@@ -26,7 +26,7 @@
 
 # 📖 [School-library](#School-library) <a name="about-project"></a>
 
-The School-library project is an application that allows an efficient use of libraries especially in school areas. The administrators can perform the tasks such as add, delete and update information about books and publications as well as lending books to students or other registerd users as the teachers and administration employees. Users, students, teachers and administration employees can borrow books through the application. The School-library app was created with Ruby.  
+The School-library project is an application that allows an efficient use of libraries especially in school areas. The administrators can perform the tasks such as add, delete and update information about books and publications as well as lending books to students or other registerd users as the teachers and administration employees. Users, students, teachers and administration employees can borrow books through the application. The School-library app was created with Ruby and uses React.js as a client technology. 
 
 ## 🛠 Built With <a name="built-with"></a>
 
