@@ -26,7 +26,7 @@
 
 # 📖 [School-library](#School-library) <a name="about-project"></a>
 
-The School-library project is an application that allows an efficient use of libraries especially in school areas. The administrators can perform the tasks such as add, delete and update information about books and publications as well as ..... books to students or other registerd users as the teachers and administration employees. Users, students, teachers and administration employees can borrow books through the application. The School-library app was created with Ruby.  
+The School-library project is an application that allows an efficient use of libraries especially in school areas. The administrators can perform the tasks such as add, delete and update information about books and publications as well as lending books to students or other registerd users as the teachers and administration employees. Users, students, teachers and administration employees can borrow books through the application. The School-library app was created with Ruby and uses React.js as a client technology. 
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -37,12 +37,15 @@ The following technologies have been used for the project development.
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://react.dev/">React.js</a></li>
   </ul>
 </details>
 
 <details>
   <summary>Server</summary>
+  <ul>
+    <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
+  </ul>
   <ul>
     <li><a href="https://expressjs.com/">Rails.js</a></li>
   </ul>
@@ -61,14 +64,14 @@ The following technologies have been used for the project development.
 
 The key features of the application are:
 
-- **[Create and delete books]()**
-- **[List books]()**
-- **[Select book]()**
-- **[Filter books]()**
-- **[Create and delete users]()**
-- **[List users]()**
-- **[Select user]()**
-- **[Filter users]()**
+- **Create and delete books**
+- **List books**
+- **Select book**
+- **Filter books**
+- **Create and delete users**
+- **List users**
+- **Select user**
+- *[Filter users**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -142,7 +145,7 @@ You can deploy the School-library application using: google cloud, Microsoft Azu
 
 👤 Didy
 
-GitHub: [@Didy](github.com/diarisdiakite)
+GitHub: [@Didy](https://www.github.com/diarisdiakite)
 <br> Twitter: [@diarisdiakite](https://www.twitter.com/diarisd)
 <br>LinkedIn: [@diarisdiakite](https://www.linkedin.com/in/diariatou-diakite-67ab80165/)
 <br><br>
@@ -155,7 +158,7 @@ GitHub: [@Didy](github.com/diarisdiakite)
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Dynamic list creating by the users using the interface]()**
+- [ ] **Dynamic list creating by the users using the interface**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

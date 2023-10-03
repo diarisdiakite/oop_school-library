@@ -1,4 +1,4 @@
-require_relative 'class_person'
+require_relative 'person'
 
 class Teacher < Person
   attr_reader :specialization
@@ -10,7 +10,7 @@ class Teacher < Person
   end
 
   # Override can_use_services? so it always returns true
-  def can_use_services
+  def can_use_services?
     true
   end
 end
