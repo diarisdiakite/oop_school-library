@@ -10,7 +10,6 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
-    # @nameable = nameable
   end
 
   def generate_id
@@ -34,6 +33,3 @@ class Person < Nameable
     age >= 18
   end
 end
-
-# person = Person.new(22, 'maximilianus')
-# puts person.name
