@@ -1,12 +1,30 @@
 require_relative 'person'
 
 class Student < Person
-  attr_reader :classroom
+  attr_accessor :classroom, :students
+
+  # My class variable students which stores all the students
+  @@students = []
 
   # Constructor extends parent's constructor by adding `@classroom` and a parameter for it.
   def initialize(age, classroom, name = 'Unknown', parent_permission: true)
-    super(id, age, name, parent_permission)
+    super(age, name, parent_permission)
     @classroom = classroom
+  end
+
+  def self.add_a_student(age, classroom, name='Unknown')
+    Student.new(age, classroom, name)
+    @@students.push(student)
+  end
+
+  def self.list_all_students
+    @@students.each { |student| puts "#{student.name} in #{student.classroom}" }
+  end
+
+  def self.select_a_student(student_to_select)
+    selected_student = @@students.find { |student| student.name == student_to_select }
+    return selected_student if selected_student
+    puts "Student not found"
   end
 
   # Method play_hooky that returns "¯\(ツ)/¯"
