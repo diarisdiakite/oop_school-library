@@ -2,7 +2,7 @@ class Rental
   attr_accessor :date, :person, :book
   attr_reader :id
 
-  @@rentals = []
+  @rentals = []
 
   def initialize(date, person, book)
     @id = generate_id
@@ -13,6 +13,8 @@ class Rental
 
     @book = book
     book.rentals << self
+
+    self.class.rentals << self
   end
 
   def generate_id
@@ -21,16 +23,25 @@ class Rental
 
   def self.add_a_rental(date, book, person)
     Rental.new(date, book, person)
-    @@rentals.push(rental)
+    # @rentals.push(rental)
+  end
+
+  def self.rentals
+    @rentals
+  end
+
+  def self.rentals_count
+    @rentals.length
   end
 
   def self.list_all_rentals
-    @@rentals.each { |rental| puts "#{rental.date}: #{rental.book} rented to #{rental.person}" }
+    @rentals.each { |rental| puts "#{rental.date}: #{rental.book} rented to #{rental.person}" }
   end
 
   def self.select_a_rental(rental_to_select)
-    selected_rental = @@rentals.find { |rental| rental.id == rental_to_select }
+    selected_rental = @rentals.find { |rental| rental.id == rental_to_select }
     return selected_rental if selected_rental
-    puts "Rental not found"
+
+    puts 'Rental not found'
   end
 end
