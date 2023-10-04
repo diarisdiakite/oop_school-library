@@ -1,15 +1,19 @@
 require_relative 'nameable'
 
 class Person < Nameable
-  attr_accessor :age, :name, :rentals
+  attr_accessor :age, :name, :rentals, :classroom, :specialization
   attr_reader :id, :parent_permission
 
-  def initialize(age, name = 'Unknown', parent_permission: true)
+  @people = []
+
+  def initialize(age, name = 'Unknown', classroom = nil, specialization = nil, parent_permission: true)
     super()
     @id = generate_id
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @classroom = classroom # student class param
+    @specialization = specialization # teacher class param
     @rentals = []
   end
 
