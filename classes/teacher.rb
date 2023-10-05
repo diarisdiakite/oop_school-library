@@ -1,19 +1,19 @@
 require_relative 'person'
 
 class Teacher < Person
-  attr_accessor :specialization, :teachers
+  attr_accessor :status, :specialization, :teachers
 
-  # My class variable teachers to store all the teachers
+  # My class instance variable teachers to store all the teachers
   @teachers = []
 
-  def initialize(age, name = 'Unknown', specialization, parent_permission: true)
-    super(age, name, parent_permission)
+  def initialize(status, age, name = 'Unknown', specialization, parent_permission: true)
+    super(status, age, name, parent_permission)
     @specialization = specialization
     self.class.teachers << self
   end
 
-  def self.add_a_teacher(age, name = 'Unknown', specialization)
-    teacher = Teacher.new(age, name, specialization)
+  def self.add_a_teacher(status, age, name = 'Unknown', specialization)
+    teacher = Teacher.new(status = 'Teacher', age, name, specialization)
   end
 
   def self.teachers
