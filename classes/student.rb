@@ -7,14 +7,14 @@ class Student < Person
   @students = []
 
   # Constructor extends parent's constructor by adding `@classroom` and a parameter for it.
-  def initialize(age, classroom, name = 'Unknown', parent_permission: true)
+  def initialize(age, name = 'Unknown', classroom = 'Unknown', parent_permission: true)
     super(age, name, parent_permission)
     @classroom = classroom
     self.class.students << self
   end
 
-  def self.add_a_student(age, classroom, name = 'Unknown')
-    Student.new(age, classroom, name)
+  def self.add_a_student(age, name, classroom)
+    Student.new(age, name, classroom)
   end
 
   class << self
@@ -29,8 +29,8 @@ class Student < Person
     @students.each { |student| puts "[#{student.id}] #{student.name} in #{student.classroom}" }
   end
 
-  def self.select_a_student(student_to_select)
-    selected_student = @students.find { |student| student.id == student_to_select }
+  def self.select_a_student(selected_id)
+    selected_student = @students.find { |student| student.id == selected_id }
     return selected_student if selected_student
 
     puts 'Student not found'
