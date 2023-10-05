@@ -4,16 +4,15 @@ class Person < Nameable
   attr_accessor :age, :name, :rentals, :classroom, :specialization
   attr_reader :id, :parent_permission
 
-  # @people ||= []
   @@all_people ||= []
 
-  def initialize(age, classroom = nil, specialization = nil, name = 'Unknown', parent_permission: true)
+  def initialize(age, name = 'Unknown', classroom = nil, specialization = nil, parent_permission: true)
     super()
     @id = generate_id
+    @name = name
     @age = age
     @classroom = classroom # student class param
     @specialization = specialization # teacher class param
-    @name = name
     @parent_permission = parent_permission
     @rentals = []
     self.class.add_person(self)
@@ -30,8 +29,8 @@ class Person < Nameable
   end
 
   def self.list_all_people
-    @@all_people.concat(Student.students)
-    @@all_people.concat(Teacher.teachers)
+    # @@all_people.concat(Student.students)
+    # @@all_people.concat(Teacher.teachers)
 
     @@all_people.each do |person|
       puts "[#{person.id}] #{person.name} (Age: #{person.age})"
