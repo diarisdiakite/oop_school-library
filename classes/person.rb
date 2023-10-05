@@ -38,6 +38,10 @@ class Person < Nameable
     end
   end
 
+  def self.people_count
+    @@all_people.length
+  end
+
   def self.select_a_person(selected_id)
     selected_person = @@all_people.find { |person| person.id == selected_id }
     return selected_person if selected_person
