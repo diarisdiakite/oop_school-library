@@ -1,18 +1,18 @@
 class Rental
-  attr_accessor :date, :person, :book
+  attr_accessor :date, :book, :person
   attr_reader :id
 
   @rentals = []
 
-  def initialize(date, person, book)
+  def initialize(date, book, person)
     @id = generate_id
     @date = date
 
-    @person = person
-    person.rentals << self
-
     @book = book
     book.rentals << self
+
+    @person = person
+    person.rentals << self
 
     self.class.rentals << self
   end

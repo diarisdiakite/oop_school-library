@@ -1,21 +1,20 @@
 require_relative 'nameable'
 
 class Person < Nameable
-  attr_accessor :status, :age, :name, :rentals, :classroom, :specialization
+  attr_accessor :age, :name, :rentals, :classroom, :specialization
   attr_reader :id, :parent_permission
 
   # @people ||= []
   @@all_people ||= []
 
-  def initialize(status, age, name = 'Unknown', classroom = nil, specialization = nil, parent_permission: true)
+  def initialize(age, classroom = nil, specialization = nil, name = 'Unknown', parent_permission: true)
     super()
     @id = generate_id
-    @status = status
-    @name = name
     @age = age
-    @parent_permission = parent_permission
     @classroom = classroom # student class param
     @specialization = specialization # teacher class param
+    @name = name
+    @parent_permission = parent_permission
     @rentals = []
     self.class.add_person(self)
   end
@@ -25,25 +24,17 @@ class Person < Nameable
   end
 
   def self.add_person(person)
-    # @people ||= []
-    # @@all_people << person
     return if @@all_people.include?(person)
 
     @@all_people << person
   end
 
   def self.list_all_people
-    # all_people ||= []
-
     @@all_people.concat(Student.students)
     @@all_people.concat(Teacher.teachers)
 
     @@all_people.each do |person|
-      if person.status == 'Teacher'
-        puts "[#{person.id}] #{person.status} #{person.name} #{person.specialization}"
-      else
-        puts "[#{person.id}] #{person.status} #{person.name} #{person.classroom}"
-      end
+      puts "[#{person.id}] #{person.name} (Age: #{person.age})"
     end
   end
 

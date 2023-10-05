@@ -1,20 +1,20 @@
 require_relative 'person'
 
 class Student < Person
-  attr_accessor :status, :classroom, :students
+  attr_accessor :students
 
   # My class instance variable students which stores all the students
   @students = []
 
   # Constructor extends parent's constructor by adding `@classroom` and a parameter for it.
-  def initialize(status, age, name = 'Unknown', classroom, parent_permission: true)
-    super(status, age, name, parent_permission)
+  def initialize(age, classroom, name = 'Unknown', parent_permission: true)
+    super(age, name, parent_permission)
     @classroom = classroom
     self.class.students << self
   end
 
-  def self.add_a_student(_status, age, name = 'Unknown', classroom)
-    Student.new('Student', age, name, classroom)
+  def self.add_a_student(age, classroom, name = 'Unknown')
+    Student.new(age, classroom, name)
   end
 
   class << self
