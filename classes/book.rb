@@ -24,8 +24,8 @@ class Book
     @books.each { |book| puts "[#{book.id}] #{book.title} by #{book.author}" }
   end
 
-  def select_a_book(title_to_select)
-    selected_book = @books.find { |book| book.title == title_to_select }
+  def self.select_a_book(selected_id)
+    selected_book = @books.find { |book| book.id == selected_id }
     return selected_book if selected_book
 
     puts 'Book not found'
