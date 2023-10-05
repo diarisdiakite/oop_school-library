@@ -45,19 +45,19 @@ class App
         Teacher.list_all_teachers
       when 3
         # Create a person
-        print 'Do you want to create a student(1) or a teacher(2)? [input the number]:'
+        print 'Do you want to create a student(1) or a teacher(2)? [input the number]: '
         input = gets.chomp.to_i
-        puts 'Age:'
+        print 'Age: '
         age = gets.chomp.to_i
-        puts 'Name:'
+        print 'Name: '
         name = gets.chomp
         if input == 1
-          puts 'Classroom:'
+          print 'Classroom: '
           classroom = gets.chomp
           Student.add_a_student(age, name, classroom)
           puts "The student #{name} has been created and added to the classroom #{classroom}"
         elsif input == 2
-          puts 'Specialization:'
+          print 'Specialization: '
           specialization = gets.chomp
           Teacher.add_a_teacher(age, name, specialization)
           puts "The teacher #{name} specialized in #{specialization} has been created and added"
@@ -66,25 +66,27 @@ class App
         end
       when 4
         # Create a book
-        puts 'Enter the book title:'
+        print 'Enter the book title: '
         title = gets.chomp.to_s
-        puts 'Enter the book author:'
+        print 'Enter the book author: '
         author = gets.chomp.to_s
         Book.add_a_book(title, author)
         puts "Your book #{title} by #{author} has been created and added to the library"
       when 5
         # Create a rental
-        puts 'Select a book by its number from the following list:'
+        puts 'Select a book by its number from the following list: '
         Book.list_all_books
-        book = gets.chomp
 
-        puts 'Select a person by its number from the following list:'
+        selected_id = gets.chomp.to_i
+        book = Book.select_a_book(selected_id)
+
+        puts 'Select a person by its number from the following list: '
         Person.list_all_people
 
-        person_id = gets.chomp
-        selected_person = Person.select_a_person(person_id)
+        selected_id = gets.chomp.to_i
+        person = Person.select_a_person(selected_id)
 
-        if selected_person
+        if person
           date = Date.today
           Rental.add_a_rental(date, book, person)
           puts 'Rental created successfully'
@@ -93,14 +95,20 @@ class App
         end
       when 6
         # List all rentals for a given person id
-        puts 'Enter the person id:'
+        puts 'Enter the person id: '
         Person.list_all_people
-        id_to_select = gets.chomp
-        selected_person = Person.select_a_person(id_to_select)
 
-        # selected_person_rentals_count = selected_person.rentals.count
-        puts "#{selected_person.name} rented the following books:"
-        selected_person.rentals.each { |rental| puts rental.book.title }
+        selected_id = gets.chomp.to_i
+        person = Person.select_a_person(selected_id)
+
+        person_rentals_count = Rental.rentals.count
+        puts "#{person.name} rented #{person_rentals_count} times."
+        if person_rentals_count.positive?
+          puts 'The following books were concerned:'
+          person.rentals.each do |rental|
+            puts "[#{rental.book.id}] #{rental.book.title} by #{rental.book.author}"
+          end
+        end
       when 7
         break
       else
