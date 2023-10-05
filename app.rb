@@ -31,8 +31,8 @@ class App
       when 1
         book_count = Book.books_count
         puts "We have #{book_count} book."
-        if book_count > 0
-          puts "Here is the list of all books" 
+        if book_count.positive?
+          puts 'Here is the list of all books'
           Book.list_all_books
         end
       when 2
@@ -77,24 +77,30 @@ class App
         puts 'Select a book by its number from the following list:'
         Book.list_all_books
         book = gets.chomp
+
         puts 'Select a person by its number from the following list:'
-        puts "[Student]"
-        Student.list_all_students
-        puts "[Teachers]"
-        Teacher.list_all_teachers
-        person = gets.chomp
-        date = Date.today
-        Rental.add_a_rental(date, book, person)
-        puts date
-        puts 'Rental created successfully'
+        Person.list_all_people
+
+        person_id = gets.chomp
+        selected_person = Person.select_a_person(person_id)
+
+        if selected_person
+          date = Date.today
+          Rental.add_a_rental(date, book, person)
+          puts 'Rental created successfully'
+        else
+          puts 'Person not found'
+        end
       when 6
         # List all rentals for a given person id
         puts 'Enter the person id:'
-        Student.list_all_students
-        Teacher.list_all_teachers
-        person_to_select = gets.chomp
-        selected_person = Person.select_a_person(person_to_select)
-        puts "You selected #{selected_person}"
+        Person.list_all_people
+        id_to_select = gets.chomp
+        selected_person = Person.select_a_person(id_to_select)
+
+        # selected_person_rentals_count = selected_person.rentals.count
+        puts "#{selected_person.name} rented the following books:"
+        selected_person.rentals.each { |rental| puts rental.book.title }
       when 7
         break
       else

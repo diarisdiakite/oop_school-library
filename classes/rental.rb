@@ -26,8 +26,8 @@ class Rental
     # @rentals.push(rental)
   end
 
-  def self.rentals
-    @rentals
+  class << self
+    attr_reader :rentals
   end
 
   def self.rentals_count

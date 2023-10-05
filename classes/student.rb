@@ -13,12 +13,12 @@ class Student < Person
     self.class.students << self
   end
 
-  def self.add_a_student(status, age, name = 'Unknown', classroom)
-    student = Student.new(status = 'Student', age, name, classroom)
+  def self.add_a_student(_status, age, name = 'Unknown', classroom)
+    Student.new('Student', age, name, classroom)
   end
 
-  def self.students
-    @students
+  class << self
+    attr_reader :students
   end
 
   def self.students_count

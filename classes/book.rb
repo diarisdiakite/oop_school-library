@@ -17,7 +17,7 @@ class Book
   end
 
   def self.add_a_book(title, author)
-    book = Book.new(title, author)
+    Book.new(title, author)
   end
 
   def self.list_all_books
@@ -35,8 +35,8 @@ class Book
     Rental.new(date, self, person)
   end
 
-  def self.books
-    @books
+  class << self
+    attr_reader :books
   end
 
   def self.books_count

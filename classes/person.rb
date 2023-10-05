@@ -27,9 +27,9 @@ class Person < Nameable
   def self.add_person(person)
     # @people ||= []
     # @@all_people << person
-    unless @@all_people.include?(person)
-      @@all_people << person
-    end
+    return if @@all_people.include?(person)
+
+    @@all_people << person
   end
 
   def self.list_all_people

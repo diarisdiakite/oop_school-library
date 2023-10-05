@@ -12,12 +12,12 @@ class Teacher < Person
     self.class.teachers << self
   end
 
-  def self.add_a_teacher(status, age, name = 'Unknown', specialization)
-    teacher = Teacher.new(status = 'Teacher', age, name, specialization)
+  def self.add_a_teacher(_status, age, name = 'Unknown', specialization)
+    Teacher.new('Teacher', age, name, specialization)
   end
 
-  def self.teachers
-    @teachers
+  class << self
+    attr_reader :teachers
   end
 
   def self.teachers_count
