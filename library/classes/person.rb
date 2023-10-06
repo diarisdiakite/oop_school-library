@@ -43,7 +43,6 @@ class Person < Nameable
   def self.select_a_person(selected_index)
     return @@all_people[selected_index] if selected_index >= 0 && selected_index < @@all_people.length
 
-
     puts 'Person not found'
     nil
   end
