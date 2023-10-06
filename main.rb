@@ -1,48 +1,56 @@
 require_relative 'library/app'
 
-# This class represents the main application for managing books, people, and rentals.
-
 class Main
   include App
 
-  def main
-    response = nil
-    # *Present the user with a list of options to perform.
-    puts "Welcome to School Library App!\n\n"
-    while response != '7'
-      puts 'Please choose an option by entering a number:'
-      puts '1 - List all books'
-      puts '2 - List all people'
-      puts '3 - Create a person'
-      puts '4 - Create a book'
-      puts '5 - Create a rental'
-      puts '6 - List all rentals for a given person id'
-      puts '7 - Exit'
+  MENU_OPTIONS = {
+    1 => { label: 'List all books', action: :call_list_all_books },
+    2 => { label: 'List all people', action: :call_list_all_people },
+    3 => { label: 'Create a person', action: :call_create_a_person },
+    4 => { label: 'Create a book', action: :call_create_a_book },
+    5 => { label: 'Create a rental', action: :call_create_a_rental },
+    6 => { label: 'List all rentals for a given person id', action: :call_list_all_rentals_for_a_person },
+    7 => { label: 'Exit', action: :exit_application }
+  }.freeze
 
-      # choice
+  def main
+    display_welcome_message
+
+    loop do
+      display_menu
+
       choice = gets.chomp.to_i
 
-      # case choice
-      case choice
-      when 1
-        call_list_all_books
-      when 2
-        call_list_all_people
-      when 3
-        call_create_a_person
-      when 4
-        call_create_a_book
-      when 5
-        call_create_a_rental
-      when 6
-        call_list_all_rentals_for_a_person
-      when 7
-        break
-      else
-        puts 'Invalid choice'
+      if MENU_OPTIONS.key?(choice)
+        send(MENU_OPTIONS[choice][:action])
         puts ''
+      else
+        display_invalid_choice
       end
+
+      break if choice == 7
     end
+  end
+
+  private
+
+  def display_welcome_message
+    puts "Welcome to School Library App!\n\n"
+  end
+
+  def display_menu
+    puts 'Please choose an option by entering a number:'
+    MENU_OPTIONS.each do |number, option|
+      puts "#{number} - #{option[:label]}"
+    end
+  end
+
+  def exit_application
+    puts 'Exiting the application. Goodbye!'
+  end
+
+  def display_invalid_choice
+    puts 'Invalid choice'
   end
 end
 
