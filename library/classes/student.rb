@@ -13,8 +13,8 @@ class Student < Person
     self.class.students << self
   end
 
-  def self.add_a_student(age, name, classroom)
-    Student.new(age, name, classroom)
+  def self.add_a_student(age, name, parent_permission)
+    Student.new(age, name, parent_permission)
   end
 
   class << self
@@ -26,7 +26,7 @@ class Student < Person
   end
 
   def self.list_all_students
-    @students.each { |student| puts "[#{student.id}] #{student.name} in #{student.classroom}" }
+    @students.each { |student| puts "[Student] Name: #{student.name}, ID: #{student.id}, Age: #{student.age}" }
   end
 
   def self.select_a_student(selected_id)

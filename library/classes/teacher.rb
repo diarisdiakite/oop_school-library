@@ -25,7 +25,7 @@ class Teacher < Person
   end
 
   def self.list_all_teachers
-    @teachers.each { |teacher| puts "[#{teacher.id}] #{teacher.name}, specialized in #{teacher.specialization}" }
+    @teachers.each { |teacher| puts "[Teacher] #{teacher.name}, ID: #{teacher.id}, Age: #{teacher.age}" }
   end
 
   def self.select_a_teacher(selected_id)
