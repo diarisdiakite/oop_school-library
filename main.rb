@@ -27,8 +27,8 @@ def main
     choice = gets.chomp.to_i
 
     books_count = Book.books_count
-    people_count = Person.people_count
-    rentals_count = Rental.rentals_count
+    Person.people_count
+    Rental.rentals_count
     students_count = Student.students_count
     teachers_count = Teacher.teachers_count
 
@@ -61,17 +61,15 @@ def main
         parent_permission = gets.chomp
         Student.add_a_student(age, name, parent_permission)
         puts "The student #{name}, Age: #{age} has been created."
-        puts ''
       elsif input == 2
         print 'Specialization: '
         specialization = gets.chomp
         Teacher.add_a_teacher(age, name, specialization)
         puts "The teacher #{name}, Age: #{age}, specialized in #{specialization} has been created."
-        puts ''
       else
         puts 'Invalid option'
-        puts ''
       end
+      puts ''
     when 4
       # Create a book
       print 'Enter the book title: '
@@ -147,4 +145,4 @@ def main
 end
 
 # rubocop:enable Metrics
-main()
+main

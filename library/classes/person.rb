@@ -41,12 +41,11 @@ class Person < Nameable
   end
 
   def self.select_a_person(selected_index)
-    if selected_index >= 0 && selected_index < @@all_people.length
-      return @@all_people[selected_index]
-    else
-      puts 'Person not found'
-      return nil
-    end
+    return @@all_people[selected_index] if selected_index >= 0 && selected_index < @@all_people.length
+
+
+    puts 'Person not found'
+    nil
   end
 
   # rubocop:enable Style/ClassVars
