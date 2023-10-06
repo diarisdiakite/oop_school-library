@@ -1,12 +1,14 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'date'
-require_relative 'classes/person'
-require_relative 'classes/teacher'
-require_relative 'classes/student'
-require_relative 'classes/book'
-require_relative 'classes/rental'
+require_relative 'library/classes/person'
+require_relative 'library/classes/teacher'
+require_relative 'library/classes/student'
+require_relative 'library/classes/book'
+require_relative 'library/classes/rental'
 
+# This class represents the main application for managing books, people, and rentals.
 # rubocop:disable Metrics
 class App
   def display_menu

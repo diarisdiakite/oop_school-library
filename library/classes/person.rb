@@ -4,6 +4,7 @@ class Person < Nameable
   attr_accessor :age, :name, :rentals, :classroom, :specialization
   attr_reader :id, :parent_permission
 
+  # rubocop:disable Style/ClassVars
   @@all_people ||= []
 
   def initialize(age, name = 'Unknown', classroom = nil, specialization = nil, parent_permission: true)
@@ -29,9 +30,6 @@ class Person < Nameable
   end
 
   def self.list_all_people
-    # @@all_people.concat(Student.students)
-    # @@all_people.concat(Teacher.teachers)
-
     @@all_people.each do |person|
       puts "[#{person.id}] #{person.name} (Age: #{person.age})"
     end
@@ -48,6 +46,7 @@ class Person < Nameable
     puts 'Person not found'
   end
 
+  # rubocop:enable Style/ClassVars
   # Public method can_use_services? that returns true if person is of age or if they have permission from parents.
   def can_use_services?
     of_age? || @parent_permission
