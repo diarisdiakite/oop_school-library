@@ -13,7 +13,8 @@ class Teacher < Person
   end
 
   def self.add_a_teacher(age, name = 'Unknown', specialization)
-    Teacher.new(age, name, specialization)
+    teacher = Teacher.new(age, name, specialization)
+    Person.add_person(teacher)
   end
 
   class << self

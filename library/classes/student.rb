@@ -14,7 +14,8 @@ class Student < Person
   end
 
   def self.add_a_student(age, name, parent_permission)
-    Student.new(age, name, parent_permission)
+    student = Student.new(age, name, parent_permission)
+    Person.add_person(student)
   end
 
   class << self
