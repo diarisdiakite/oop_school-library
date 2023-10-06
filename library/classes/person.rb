@@ -30,8 +30,9 @@ class Person < Nameable
   end
 
   def self.list_all_people
-    @@all_people.each do |person|
-      puts "[#{person.id}] #{person.name} (Age: #{person.age})"
+    # add a list by number
+    @@all_people.each_with_index do |person, index|
+      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
   end
 
@@ -39,11 +40,13 @@ class Person < Nameable
     @@all_people.length
   end
 
-  def self.select_a_person(selected_id)
-    selected_person = @@all_people.find { |person| person.id == selected_id }
-    return selected_person if selected_person
-
-    puts 'Person not found'
+  def self.select_a_person(selected_index)
+    if selected_index >= 0 && selected_index < @@all_people.length
+      return @@all_people[selected_index]
+    else
+      puts 'Person not found'
+      return nil
+    end
   end
 
   # rubocop:enable Style/ClassVars
