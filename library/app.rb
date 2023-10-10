@@ -1,3 +1,4 @@
+require 'pry'
 require 'date'
 require_relative 'classes/book'
 require_relative 'classes/person'

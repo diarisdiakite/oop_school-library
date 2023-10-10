@@ -71,7 +71,7 @@ The key features of the application are:
 - **Create and delete users**
 - **List users**
 - **Select user**
-- *[Filter users**
+- **Filter users**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
