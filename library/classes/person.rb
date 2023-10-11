@@ -1,6 +1,10 @@
+require 'json'
 require_relative 'nameable'
+# require_relative '../storage/load_data/load_people'
 
 class Person < Nameable
+  # include LoadPeople
+
   attr_accessor :age, :name, :rentals, :classroom, :specialization
   attr_reader :id, :parent_permission
 
