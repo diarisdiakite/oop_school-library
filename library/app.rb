@@ -5,9 +5,14 @@ require_relative 'classes/person'
 require_relative 'classes/teacher'
 require_relative 'classes/student'
 require_relative 'classes/rental'
+require_relative 'storage/save_data/save_books'
+require_relative 'storage/save_data/save_people'
+require_relative 'storage/save_data/save_rentals'
 
 # This class represents the main application for managing books, people, and rentals.
 module App
+  include SaveBooks
+
   def call_list_all_books
     books_count = Book.books_count
     puts "We have #{books_count} book."
@@ -56,8 +61,13 @@ module App
     title = gets.chomp.to_s
     print 'Enter the book author: '
     author = gets.chomp.to_s
-    Book.add_a_book(title, author)
-    puts "Your book #{title} by #{author} has been created and added to the library.\n\n"
+    book = Book.add_a_book(title, author)
+    # @books_list.push(book) # << book
+    puts "Your book #{book.title} by #{book.author} has been created and added to the library.\n\n"
+
+    # Save the updated library to a JSON file
+    save_books_to_json('storage/data')
+    puts "Library saved to JSON file.\n\n"
   end
 
   def call_create_a_rental
@@ -68,8 +78,7 @@ module App
       puts 'Select a book by its number from the following list: '
       Book.list_all_books
 
-      selected_id = gets.chomp.to_i
-      book = Book.select_a_book(selected_id)
+      book = Book.select_a_book(gets.chomp.to_i)
 
       puts 'Select a person by its number from the following list: '
       Person.list_all_people
