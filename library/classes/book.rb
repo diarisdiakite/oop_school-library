@@ -1,4 +1,9 @@
+require 'json'
+require_relative '../storage/load_data/load_books'
+
 class Book
+  include LoadBooks
+
   attr_accessor :title, :name, :author, :rentals
   attr_reader :id
 
@@ -41,5 +46,14 @@ class Book
 
   def self.books_count
     @books.length
+  end
+
+  def to_json(*_args)
+    {
+      id: id,
+      title: title,
+      author: author,
+      rentals: rentals
+    }.to_json
   end
 end

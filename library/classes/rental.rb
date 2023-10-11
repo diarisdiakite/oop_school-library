@@ -1,3 +1,6 @@
+require 'json'
+require_relative '../storage/load_data/load_rentals'
+
 class Rental
   attr_accessor :date, :book, :person
   attr_reader :id
@@ -43,5 +46,14 @@ class Rental
     return selected_rental if selected_rental
 
     puts 'Rental not found'
+  end
+
+  def to_json(*_args)
+    {
+      id: id,
+      date: date,
+      book: book,
+      person: person
+    }.to_json
   end
 end

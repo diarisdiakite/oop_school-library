@@ -1,4 +1,6 @@
+require 'json'
 require_relative 'person'
+require_relative '../storage/load_data/load_people'
 
 class Student < Person
   attr_accessor :students
@@ -45,5 +47,15 @@ class Student < Person
   def classroom=(classroom)
     @classroom = classroom
     classroom.students.push(self) unless classroom.students.include?(self)
+  end
+
+  def to_json(*_args)
+    {
+      id: id,
+      age: age,
+      name: name,
+      classroom: classroom,
+      parent_permission: parent_permission
+    }.to_json
   end
 end

@@ -1,4 +1,6 @@
+require 'json'
 require_relative 'person'
+require_relative '../storage/load_data/load_people'
 
 class Teacher < Person
   attr_accessor :specialization, :teachers
@@ -38,5 +40,14 @@ class Teacher < Person
 
   def can_use_services?
     true
+  end
+
+  def to_json(*_args)
+    {
+      id: id,
+      age: age,
+      name: name,
+      specialization: specialization
+    }.to_jsonR
   end
 end
