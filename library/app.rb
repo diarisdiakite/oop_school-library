@@ -66,8 +66,8 @@ module App
     puts "Your book #{book.title} by #{book.author} has been created and added to the library.\n\n"
 
     # Save the updated library to a JSON file
-    save_books_to_json('storage/data')
-    puts "Library saved to JSON file.\n\n"
+    # SaveBooks.save_books_to_json('storage/data')
+    # puts "Library saved to JSON file.\n\n"
   end
 
   def call_create_a_rental

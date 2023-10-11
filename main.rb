@@ -15,8 +15,8 @@ class Main
   include SavePeople
   include SaveRentals
 
-  def initialize(data_dir)
-    @data_dir = data_dir
+  def initialize
+    @data_dir = File.join(File.dirname(__FILE__), 'library', 'storage', 'data')
   end
 
   MENU_OPTIONS = {
@@ -87,7 +87,5 @@ class Main
   end
 end
 
-data_dir = File.join(File.dirname(__FILE__), 'library', 'storage', 'data')
-
-app = Main.new(data_dir)
+app = Main.new
 app.main
