@@ -16,11 +16,10 @@ def load_people_from_json
 
     people_data = JSON.parse(File.read('people.json'))
     people_data.each do |data|
-      if data['type'] == 'student'
-        classroom = Classroom.new(data['classroom'])
-        student = Student.new(data['age'], classroom, data['name'])
+      if data['type'] == 'Student'
+        student = Student.new(data['age'], data['name'])
         @people.push(student)
-      elsif data['type'] == 'teacher'
+      elsif data['type'] == 'Teacher'
         teacher = Teacher.new(data['age'], data['specialization'], data['name'])
         @people.push(teacher)
       end
