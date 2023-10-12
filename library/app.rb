@@ -5,13 +5,11 @@ require_relative 'classes/person'
 require_relative 'classes/teacher'
 require_relative 'classes/student'
 require_relative 'classes/rental'
-require_relative 'storage/save_data/save_books'
-require_relative 'storage/save_data/save_people'
-require_relative 'storage/save_data/save_rentals'
+require_relative '../load_data'
 
 # This class represents the main application for managing books, people, and rentals.
 module App
-  include SaveBooks
+  # include SaveBooks
 
   def call_list_all_books
     books_count = Book.books_count
@@ -31,6 +29,10 @@ module App
     puts "We have #{students_count} students and #{teachers_count} teachers in the database"
     Student.list_all_students
     Teacher.list_all_teachers
+
+    puts ''
+    puts 'All people for debug'
+    Person.list_all_people
     puts ''
   end
 
@@ -61,13 +63,9 @@ module App
     title = gets.chomp.to_s
     print 'Enter the book author: '
     author = gets.chomp.to_s
-    book = Book.add_a_book(title, author)
+    Book.add_a_book(title, author)
     # @books_list.push(book) # << book
-    puts "Your book #{book.title} by #{book.author} has been created and added to the library.\n\n"
-
-    # Save the updated library to a JSON file
-    # SaveBooks.save_books_to_json('storage/data')
-    # puts "Library saved to JSON file.\n\n"
+    puts "Your book #{title} by #{author} has been created and added to the library.\n\n"
   end
 
   def call_create_a_rental
@@ -120,5 +118,44 @@ module App
     else
       puts "No person registered in the database.\n\n"
     end
+  end
+
+  # Data
+  def book_data
+    print 'Book title: '
+    title = gets.chomp
+    print 'Book author: '
+    author = gets.chomp
+    { title: title, author: author }
+  end
+
+  def person_data
+    print 'Age: '
+    age = gets.chomp.to_i
+    print 'Name: '
+    name = gets.chomp
+    if person.is_a?(Student)
+      print 'Has parents permission? [Y/N]: '
+      parent_permission = gets.chomp.upcase == 'Y'
+      { age: age, name: name, parent_permission: parent_permission }
+    else
+      # For Teacher, no parent_permission is collected
+      print 'Specialization: '
+      specialization = gets.chomp
+      { age: age, name: name, specialization: specialization }
+    end
+  end
+
+  def rental_data
+    puts 'Enter the date :'
+    date = gets.chomp.to_s
+    puts 'Select a book by its number from the following list: '
+    Book.list_all_books
+    book = Book.select_a_book(gets.chomp.to_i)
+    puts 'Select a person by its number from the following list: '
+    Person.list_all_people
+    person = Person.select_a_person(gets.chomp.to_i)
+
+    { date: date, book: book, person: person }
   end
 end

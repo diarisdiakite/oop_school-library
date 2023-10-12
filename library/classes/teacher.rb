@@ -1,6 +1,5 @@
 require 'json'
 require_relative 'person'
-require_relative '../storage/load_data/load_people'
 
 class Teacher < Person
   attr_accessor :specialization, :teachers

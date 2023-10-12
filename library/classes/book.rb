@@ -1,8 +1,9 @@
 require 'json'
-require_relative '../storage/load_data/load_books'
+# require_relative '../storage/load_data/load_books'
+# require_relative '../load_data'
 
 class Book
-  include LoadBooks
+  # include LoadBooks
 
   attr_accessor :title, :name, :author, :rentals
   attr_reader :id
@@ -23,6 +24,7 @@ class Book
 
   def self.add_a_book(title, author)
     Book.new(title, author)
+    # @books << book
   end
 
   def self.list_all_books
@@ -55,5 +57,14 @@ class Book
       author: author,
       rentals: rentals
     }.to_json
+  end
+
+  def self.from_json(json_data)
+    data = JSON.parse(json_data)
+    new(
+      data['title'],
+      data['author']
+      # Initialize other attributes from the data
+    )
   end
 end

@@ -1,5 +1,4 @@
 require 'json'
-require_relative '../storage/load_data/load_rentals'
 
 class Rental
   attr_accessor :date, :book, :person
@@ -55,5 +54,14 @@ class Rental
       book: book,
       person: person
     }.to_json
+  end
+
+  def self.from_json(json_data)
+    data = JSON.parse(json_data)
+    new(
+      data['date'],
+      Person.from_json(data['person']),
+      Book.from_json(data['book'])
+    )
   end
 end
