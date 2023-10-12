@@ -1,5 +1,3 @@
-require 'pry'
-require 'date'
 require_relative 'classes/book'
 require_relative 'classes/person'
 require_relative 'classes/teacher'
@@ -101,7 +99,7 @@ module App
     # Rental.rentals_count
 
     if students_count.positive? || teachers_count.positive?
-      puts 'Enter the person id: '
+      puts 'Enter the person index: '
       Person.list_all_people
 
       selected_id = gets.chomp.to_i
