@@ -1,3 +1,5 @@
+require 'json'
+
 class Rental
   attr_accessor :date, :book, :person
   attr_reader :id
@@ -43,5 +45,23 @@ class Rental
     return selected_rental if selected_rental
 
     puts 'Rental not found'
+  end
+
+  def to_json(*_args)
+    {
+      id: id,
+      date: date,
+      book: book,
+      person: person
+    }.to_json
+  end
+
+  def self.from_json(json_data)
+    data = JSON.parse(json_data)
+    new(
+      data['date'],
+      Person.from_json(data['person']),
+      Book.from_json(data['book'])
+    )
   end
 end

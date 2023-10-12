@@ -1,3 +1,4 @@
+require 'json'
 require_relative 'person'
 
 class Teacher < Person
@@ -38,5 +39,14 @@ class Teacher < Person
 
   def can_use_services?
     true
+  end
+
+  def to_json(*_args)
+    {
+      id: id,
+      age: age,
+      name: name,
+      specialization: specialization
+    }.to_jsonR
   end
 end

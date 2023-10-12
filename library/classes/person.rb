@@ -1,8 +1,11 @@
+require 'json'
 require_relative 'nameable'
 
 class Person < Nameable
   attr_accessor :age, :name, :rentals, :classroom, :specialization
   attr_reader :id, :parent_permission
+
+  @all_people = []
 
   def initialize(age, name = 'Unknown', classroom = nil, specialization = nil, parent_permission: true)
     super()
@@ -40,11 +43,25 @@ class Person < Nameable
     @all_people.length
   end
 
+  class << self
+    attr_accessor :all_people
+  end
+
   def self.select_a_person(selected_index)
     return @all_people[selected_index] if selected_index >= 0 && selected_index < @all_people.length
 
     puts 'Person not found'
     nil
+  end
+
+  def self.from_json(json_data)
+    data = JSON.parse(json_data)
+    # Parse JSON data and create a new Person object
+    if data['type'] == 'Student'
+      Student.new(data['id'], data['age'], data['name'], data['classroom'])
+    elsif data['type'] == 'Teacher'
+      Teacher.new(data['id'], data['age'], data['name'], data['specialization'])
+    end
   end
 
   # Public method can_use_services? that returns true if person is of age or if they have permission from parents.

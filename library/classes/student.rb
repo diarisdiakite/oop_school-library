@@ -1,3 +1,4 @@
+require 'json'
 require_relative 'person'
 
 class Student < Person
@@ -45,5 +46,15 @@ class Student < Person
   def classroom=(classroom)
     @classroom = classroom
     classroom.students.push(self) unless classroom.students.include?(self)
+  end
+
+  def to_json(*_args)
+    {
+      id: id,
+      age: age,
+      name: name,
+      classroom: classroom,
+      parent_permission: parent_permission
+    }.to_json
   end
 end
