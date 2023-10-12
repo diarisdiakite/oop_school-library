@@ -24,6 +24,7 @@ def save_data
     end
     File.write('people.json', JSON.dump(people_data))
   end
+
   
   rentals_data = @rentals.map do |rental|
     {
