@@ -11,7 +11,7 @@ def load_books_from_json
 end
 
 # Load people from JSON file
-def load_people
+def load_people_from_json
     return unless File.exist?('people.json')
 
     people_data = JSON.parse(File.read('people.json'))
